@@ -10,11 +10,13 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "chat-front-app.netlify.app",
+    origin: "https://chat-front-app.netlify.app",
     methods: ["GET", "POST"],
   },
 });
-
+app.get("/",(req,res)=>{
+  res.json({"message":"hello"});
+});
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
